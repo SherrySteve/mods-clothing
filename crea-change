@@ -1,0 +1,96 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Game Appearance Mod Demo</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #151923;
+      color: white;
+      text-align: center;
+      padding: 24px;
+    }
+
+    .panel {
+      max-width: 500px;
+      margin: auto;
+      padding: 24px;
+      border-radius: 16px;
+      background: #242b3b;
+    }
+
+    .preview {
+      margin: 24px auto;
+      padding: 35px 10px;
+      border-radius: 12px;
+      background: #10141d;
+      font-size: 72px;
+    }
+
+    button {
+      margin: 6px;
+      padding: 12px 16px;
+      border: 0;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    #status {
+      color: #8ef0b0;
+      overflow-wrap: anywhere;
+    }
+  </style>
+</head>
+<body>
+  <div class="panel">
+    <h1>Game Mod Loader</h1>
+    <p>角色外观 Mod 演示</p>
+
+    <div class="preview" id="preview">🧥</div>
+    <h2 id="skinName">默认外观</h2>
+
+    <button onclick="loadSkin('default')">默认外观</button>
+    <button onclick="loadSkin('dark')">暗黑外观</button>
+    <button onclick="loadSkin('gold')">黄金外观</button>
+
+    <p id="status">等待加载外观……</p>
+  </div>
+
+  <script>
+    // 模拟游戏提供的外观资源
+    const skins = {
+      default: {
+        name: "默认外观",
+        icon: "🧥"
+      },
+      dark: {
+        name: "暗黑外观",
+        icon: "🥷"
+      },
+      gold: {
+        name: "黄金外观",
+        icon: "👑"
+      }
+    };
+
+    // 模拟 Mod 加载器
+    function loadSkin(id) {
+      const skin = skins[id];
+
+      if (!skin) {
+        document.getElementById("status").textContent =
+          "加载失败：找不到外观资源";
+        return;
+      }
+
+      document.getElementById("preview").textContent = skin.icon;
+      document.getElementById("skinName").textContent = skin.name;
+      document.getElementById("status").textContent =
+        "外观加载成功：" + skin.name;
+    }
+  </script>
+</body>
+</html>
